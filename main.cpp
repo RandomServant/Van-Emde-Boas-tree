@@ -51,8 +51,48 @@ public:
             }
         }
     }
+
+    int minimumVEB() {
+        return minimum;
+    }
+
+    int maximumVEB() {
+        return maximum;
+    }
+
+    void Insert(int key) {
+        if(minimum == -1) {
+            minimum = key;
+            maximum = key;
+        }
+        else {
+            if(key < minimum)
+                swap(key, minimum);
+
+            if(universeSize > 2) {
+                if(clusters[High(key)]->minimumVEB() == -1) {
+                    summary->Insert(High(key));
+                    clusters[High(key)]->minimum = Low(key);
+                    clusters[High(key)]->maximum = Low(key);
+                }
+                else {
+                    clusters[High(key)]->Insert(Low(key));
+                }
+            }
+
+            if (key > maximum) {
+                maximum = key;
+            }
+        }
+    }
 };
 
 int main() {
+
     Van_Emde_Boas_Tree* veb = new Van_Emde_Boas_Tree(1);
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    veb->Insert(4);
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    veb->Insert(6);
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
 }
