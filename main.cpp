@@ -85,10 +85,24 @@ public:
             }
         }
     }
+
+    int SuccessorVEB(int key) {
+        if(universeSize == 2) {
+            if(key == 0 && maximum == 1)
+                return 1;
+            else
+                return -1;
+        }
+        else if (minimum != -1 && key < minimum){
+            return minimum;
+        }
+        else {
+            
+        }
+    }
 };
 
 int main() {
-
     Van_Emde_Boas_Tree* veb = new Van_Emde_Boas_Tree(1);
     cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
     veb->Insert(4);
