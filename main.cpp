@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -97,16 +98,40 @@ public:
             return minimum;
         }
         else {
-            
+            int maxElementInCluster = clusters[High(key)]->maximumVEB();
+            int offset, successorCluster;
+
+            if (maxElementInCluster != -1 && Low(key) < maxElementInCluster) {
+                offset = clusters[High(key)]->SuccessorVEB(Low(key));
+                return GenerateIndex(High(key), offset);
+            }
+
+            else {
+                successorCluster = summary->SuccessorVEB(High(key));
+
+                if (successorCluster == -1) {
+                    return -1;
+                }
+                else {
+                    offset = clusters[successorCluster]->minimumVEB();
+                    return GenerateIndex(successorCluster, offset);
+                }
+            }
         }
     }
 };
 
 int main() {
+    ifstream fin("Tests\\01.txt");
     Van_Emde_Boas_Tree* veb = new Van_Emde_Boas_Tree(1);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
+    char a[50];
+    fin.getline(a, 50);
+    cout << a << endl;
     veb->Insert(4);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
     veb->Insert(6);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
+    fin.close();
+    return 0;
 }
