@@ -119,19 +119,60 @@ public:
             }
         }
     }
+
+    int PredecessorVEB(int key) {
+        if (universeSize == 2) {
+            if (key == 1 && minimum == 0)
+                return 0;
+            else
+                return -1;
+        }
+        else if (maximum != -1 && key > maximum) {
+
+            return maximum;
+        }
+        else {
+            int minInCluster = clusters[High(key)]->minimumVEB();
+            int offset{ 0 }, pred_cluster{ 0 };
+
+            if (minInCluster != -1 && Low(key) > minInCluster) {
+                offset = clusters[High(key)]->PredecessorVEB(Low(key));
+
+                return GenerateIndex(High(key), offset);
+            }
+            else {
+                pred_cluster = summary->PredecessorVEB(High(key));
+
+                if (pred_cluster == -1) {
+                    if (minimum != -1 && key > minimum) {
+                        return minimum;
+                    } else
+                        return -1;
+                }
+                else {
+                    offset = clusters[pred_cluster]->maximumVEB();
+
+                    return GenerateIndex(pred_cluster, offset);
+                }
+            }
+        }
+    }
+
+    void DeleteVEB(int key) {
+        if(minimum == maximum)
+            return;
+        else if(universeSize == 2) {
+
+        }
+    }
 };
 
 int main() {
-    ifstream fin("Tests\\01.txt");
     Van_Emde_Boas_Tree* veb = new Van_Emde_Boas_Tree(1);
     cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
-    char a[50];
-    fin.getline(a, 50);
-    cout << a << endl;
     veb->Insert(4);
     cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
     veb->Insert(6);
     cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
-    fin.close();
     return 0;
 }
