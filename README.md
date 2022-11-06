@@ -326,3 +326,10 @@ void RemoveVEB(int key) {
         }
     }
 ```
+Список литературы
+=================
+1. https://neerc.ifmo.ru/wiki/index.php?title=Дерево_ван_Эмде_Боаса
+2. https://habr.com/ru/post/125499/
+3. https://en.wikipedia.org/wiki/Van_Emde_Boas_tree#References
+4. https://www.geeksforgeeks.org/van-emde-boas-tree-set-1-basics-and-construction/
+5. https://github.com/YAKOVLENKO/DZ
