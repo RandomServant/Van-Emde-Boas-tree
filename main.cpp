@@ -33,7 +33,6 @@ private:
 
 
 public:
-
     Van_Emde_Boas_Tree(int size) {
         universeSize = size;
         minimum = -1;
@@ -161,7 +160,7 @@ public:
         }
     }
 
-    void DeleteVEB(int key) {
+    void RemoveVEB(int key) {
         if (maximum == minimum) {
             minimum = -1;
             maximum = -1;
@@ -183,10 +182,10 @@ public:
                 minimum = key;
             }
 
-            clusters[High(key)]->DeleteVEB(Low(key));
+            clusters[High(key)]->RemoveVEB(Low(key));
 
             if (clusters[High(key)]->minimumVEB() == -1) {
-                summary->DeleteVEB(High(key));
+                summary->RemoveVEB(High(key));
 
                 if (key == maximum) {
                     int maxInSummary = summary->maximumVEB();
