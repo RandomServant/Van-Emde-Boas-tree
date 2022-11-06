@@ -5,8 +5,8 @@
 using namespace std;
 
 class Van_Emde_Boas_Tree {
-    
-public:
+
+private:
     int universeSize;
     int minimum;
     int maximum;
@@ -30,6 +30,9 @@ public:
         int ru = ceil(sqrt(universeSize));
         return x * ru + y;
     }
+
+
+public:
 
     Van_Emde_Boas_Tree(int size) {
         universeSize = size;
@@ -205,10 +208,13 @@ public:
 
 int main() {
     Van_Emde_Boas_Tree* veb = new Van_Emde_Boas_Tree(1);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
     veb->Insert(4);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    veb->DeleteVEB(4);
     veb->Insert(6);
-    cout << veb->minimumVEB() << " " << veb->maximumVEB() << " - ";
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
+    veb->Insert(3);
+    cout << veb->minimumVEB() << " " << veb->maximumVEB() << endl;
     return 0;
 }
