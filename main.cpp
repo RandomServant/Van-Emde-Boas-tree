@@ -159,10 +159,46 @@ public:
     }
 
     void DeleteVEB(int key) {
-        if(minimum == maximum)
-            return;
-        else if(universeSize == 2) {
+        if (maximum == minimum) {
+            minimum = -1;
+            maximum = -1;
+        }
+        else if (universeSize == 2) {
+            if (key == 0) {
+                minimum = 1;
+            }
+            else {
+                minimum = 0;
+            }
+            maximum = minimum;
+        }
+        else {
+            if (key == minimum) {
+                int first_cluster = summary->minimumVEB();
 
+                key = GenerateIndex(first_cluster, clusters[first_cluster]->minimumVEB());
+                minimum = key;
+            }
+
+            clusters[High(key)]->DeleteVEB(Low(key));
+
+            if (clusters[High(key)]->minimumVEB() == -1) {
+                summary->DeleteVEB(High(key));
+
+                if (key == maximum) {
+                    int maxInSummary = summary->maximumVEB();
+
+                    if (maxInSummary == -1) {
+                        maximum = minimum;
+                    }
+                    else {
+                        maximum = GenerateIndex(maxInSummary, clusters[maxInSummary]->maximumVEB());
+                    }
+                }
+            }
+            else if (key == maximum) {
+                maximum = GenerateIndex(High(key), clusters[High(key)]->maximumVEB());
+            }
         }
     }
 };
