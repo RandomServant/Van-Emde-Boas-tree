@@ -204,6 +204,23 @@ public:
             }
         }
     }
+
+    bool Find(int key) {
+        if (universeSize < key) {
+            return false;
+        }
+        if (minimum == key || maximum == key) {
+            return true;
+        }
+        else {
+            if (universeSize == 2) {
+                return false;
+            }
+            else {
+                return clusters[High(key)]->Find(Low(key));
+            }
+        }
+    }
 };
 
 int main() {
