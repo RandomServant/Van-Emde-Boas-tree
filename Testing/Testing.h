@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "VanEmdeBoasTree.h"
+#include "../vEB Tree/VanEmdeBoasTree.h"
 
 class Testing {
 
