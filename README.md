@@ -1,3 +1,4 @@
+![Fefu_logo](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/DVFU_Logo.png)
 ## Федеральное агентство по образованию РФ
 ## Дальневосточный федеральный университет
 ## ИНСТИТУТ МАТЕМАТИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ
