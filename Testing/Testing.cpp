@@ -33,28 +33,68 @@ void Testing::StartTests() {
                 if(word == findSymbol) {
                     fin >> word;
                     ans >> wordSub;
+
+                    auto begin = std::chrono::steady_clock::now();
+
                     bool answer = vanEmdeBoasTree->Find(stoi(word));
-                    fout << answer << (std::to_string(answer) == wordSub ? " Coincidence" : " Error") << "\n";
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << answer << (std::to_string(answer) == wordSub ? " Coincidence " : " Error ")
+                    << "Find - " << elapsed_ms << "\n";
                 }
                 else if(word == insertSymbol) {
                     fin >> word;
+
+                    auto begin = std::chrono::steady_clock::now();
+
                     vanEmdeBoasTree->Insert(stoi(word));
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << "Insert - " << elapsed_ms << "\n";
                 }
                 else if(word == removeSymbol) {
                     fin >> word;
+
+                    auto begin = std::chrono::steady_clock::now();
+
                     vanEmdeBoasTree->RemoveVEB(stoi(word));
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << "Remove - " << elapsed_ms << "\n";
                 }
                 else if(word == successorSymbol) {
                     fin >> word;
                     ans >> wordSub;
+
+                    auto begin = std::chrono::steady_clock::now();
+
                     int answer = vanEmdeBoasTree->SuccessorVEB(stoi(word));
-                    fout << answer << (answer == std::stoi(wordSub) ? " Coincidence" : " Error") << "\n";
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << answer << (answer == std::stoi(wordSub) ? " Coincidence " : " Error ")
+                    << "SuccessorVEB - " << elapsed_ms << "\n";
                 }
                 else if(word == predecessorSymbol) {
                     fin >> word;
                     ans >> wordSub;
+
+                    auto begin = std::chrono::steady_clock::now();
+
                     int answer = vanEmdeBoasTree->PredecessorVEB(stoi(word));
-                    fout << answer << (answer == std::stoi(wordSub) ? " Coincidence" : " Error") << "\n";
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << answer << (answer == std::stoi(wordSub) ? " Coincidence " : " Error ")
+                    << "PredecessorVEB - " << elapsed_ms << "\n";
                 }
                 else if(word == maximumSymbol) {
                     ans >> wordSub;

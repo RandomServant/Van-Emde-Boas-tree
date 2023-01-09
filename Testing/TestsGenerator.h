@@ -4,6 +4,7 @@
 #include "../vEB Tree/VanEmdeBoasTree.h"
 #include <string>
 #include <fstream>
+#include <chrono>
 
 class TestsGenerator {
 
