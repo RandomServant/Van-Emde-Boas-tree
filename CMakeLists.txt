@@ -3,4 +3,4 @@ project(Van_EmdeBoas_tree)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Van_EmdeBoas_tree main.cpp "vEB Tree/VanEmdeBoasTree.cpp" "vEB Tree/VanEmdeBoasTree.h" "Testing/Testing.cpp" "Testing/Testing.h")
+add_executable(Van_EmdeBoas_tree main.cpp "vEB Tree/VanEmdeBoasTree.cpp" "vEB Tree/VanEmdeBoasTree.h" "Testing/Testing.cpp" "Testing/Testing.h" "Testing/TestsGenerator.h" "Testing/TestsGenerator.cpp")

@@ -1,6 +1,6 @@
 #include "Testing.h"
 
-Testing::Testing(std::string url, int count) {
+Testing::Testing(std::string url, int count) : TestsGenerator(url, count) {
     filesURL = url;
     filesCount = count;
 }
