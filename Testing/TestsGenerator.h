@@ -1,9 +1,9 @@
 #ifndef VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
 #define VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
 
+#include "../vEB Tree/VanEmdeBoasTree.h"
 #include <string>
 #include <fstream>
-#include <iostream>
 
 class TestsGenerator {
 

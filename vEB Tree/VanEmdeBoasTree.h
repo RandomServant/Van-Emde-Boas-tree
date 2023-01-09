@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 #ifndef VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
 #define VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
@@ -11,7 +10,7 @@ private:
     int minimum;
     int maximum;
     VanEmdeBoasTree* summary;
-    std::vector<VanEmdeBoasTree*> clusters;
+    VanEmdeBoasTree** clusters;
 
     int High(int x) const;
     int Low(int x) const;

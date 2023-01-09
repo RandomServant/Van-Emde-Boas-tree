@@ -26,14 +26,14 @@ VanEmdeBoasTree::VanEmdeBoasTree(int size) {
 
     if(size <= 2) {
         summary = nullptr;
-        clusters = std::vector<VanEmdeBoasTree*>(0);
+        clusters = new VanEmdeBoasTree*[0];
     }
     else {
         int sizeOfNewClusters = ceil(sqrt(size));
 
         summary = new VanEmdeBoasTree(sizeOfNewClusters);
 
-        clusters = std::vector<VanEmdeBoasTree*>(sizeOfNewClusters);
+        clusters = new VanEmdeBoasTree*[sizeOfNewClusters];
 
         for (int i = 0; i < sizeOfNewClusters; ++i) {
             clusters[i] = new VanEmdeBoasTree(ceil(sqrt(size)));
@@ -43,9 +43,7 @@ VanEmdeBoasTree::VanEmdeBoasTree(int size) {
 
 VanEmdeBoasTree::~VanEmdeBoasTree() {
     delete summary;
-    for (auto & cluster : clusters) {
-        delete cluster;
-    }
+    delete[] clusters;
 }
 
 int VanEmdeBoasTree::minimumVEB() const {

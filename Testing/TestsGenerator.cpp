@@ -17,8 +17,6 @@ void TestsGenerator::GenerateTests()
     	std::ofstream fin(urlIn);
         std::ofstream fout(urlOut);
         std::ofstream fans(urlAns);
-
-
     }
 }
 
