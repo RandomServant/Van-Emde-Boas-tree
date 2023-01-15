@@ -1,7 +1,7 @@
-#include <iostream>
-
 #ifndef VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
 #define VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
+
+#include <iostream>
 
 class VanEmdeBoasTree {
 
@@ -22,8 +22,8 @@ public:
 
     ~VanEmdeBoasTree();
 
-    int minimumVEB() const;
-    int maximumVEB() const;
+    int MinimumVEB() const;
+    int MaximumVEB() const;
 
     void Insert(int key);
     int SuccessorVEB(int key);

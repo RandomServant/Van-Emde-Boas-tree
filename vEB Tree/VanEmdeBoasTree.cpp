@@ -46,11 +46,11 @@ VanEmdeBoasTree::~VanEmdeBoasTree() {
     delete[] clusters;
 }
 
-int VanEmdeBoasTree::minimumVEB() const {
+int VanEmdeBoasTree::MinimumVEB() const {
     return minimum;
 }
 
-int VanEmdeBoasTree::maximumVEB() const {
+int VanEmdeBoasTree::MaximumVEB() const {
     return maximum;
 }
 
@@ -64,7 +64,7 @@ void VanEmdeBoasTree::Insert(int key) {
             std::swap(key, minimum);
 
         if(universeSize > 2) {
-            if(clusters[High(key)]->minimumVEB() == -1) {
+            if(clusters[High(key)]->MinimumVEB() == -1) {
                 summary->Insert(High(key));
                 clusters[High(key)]->minimum = Low(key);
                 clusters[High(key)]->maximum = Low(key);
@@ -91,7 +91,7 @@ int VanEmdeBoasTree::SuccessorVEB(int key) {
         return minimum;
     }
     else {
-        int maxElementInCluster = clusters[High(key)]->maximumVEB();
+        int maxElementInCluster = clusters[High(key)]->MaximumVEB();
         int offset, successorCluster;
 
         if (maxElementInCluster != -1 && Low(key) < maxElementInCluster) {
@@ -106,7 +106,7 @@ int VanEmdeBoasTree::SuccessorVEB(int key) {
                 return -1;
             }
             else {
-                offset = clusters[successorCluster]->minimumVEB();
+                offset = clusters[successorCluster]->MinimumVEB();
                 return GenerateIndex(successorCluster, offset);
             }
         }
@@ -125,7 +125,7 @@ int VanEmdeBoasTree::PredecessorVEB(int key) {
         return maximum;
     }
     else {
-        int minInCluster = clusters[High(key)]->minimumVEB();
+        int minInCluster = clusters[High(key)]->MinimumVEB();
         int offset{ 0 }, pred_cluster{ 0 };
 
         if (minInCluster != -1 && Low(key) > minInCluster) {
@@ -143,7 +143,7 @@ int VanEmdeBoasTree::PredecessorVEB(int key) {
                     return -1;
             }
             else {
-                offset = clusters[pred_cluster]->maximumVEB();
+                offset = clusters[pred_cluster]->MaximumVEB();
 
                 return GenerateIndex(pred_cluster, offset);
             }
@@ -168,30 +168,30 @@ void VanEmdeBoasTree::RemoveVEB(int key) {
     }
     else {
         if (key == minimum) {
-            int first_cluster = summary->minimumVEB();
+            int first_cluster = summary->MinimumVEB();
 
-            key = GenerateIndex(first_cluster, clusters[first_cluster]->minimumVEB());
+            key = GenerateIndex(first_cluster, clusters[first_cluster]->MinimumVEB());
             minimum = key;
         }
 
         clusters[High(key)]->RemoveVEB(Low(key));
 
-        if (clusters[High(key)]->minimumVEB() == -1) {
+        if (clusters[High(key)]->MinimumVEB() == -1) {
             summary->RemoveVEB(High(key));
 
             if (key == maximum) {
-                int maxInSummary = summary->maximumVEB();
+                int maxInSummary = summary->MaximumVEB();
 
                 if (maxInSummary == -1) {
                     maximum = minimum;
                 }
                 else {
-                    maximum = GenerateIndex(maxInSummary, clusters[maxInSummary]->maximumVEB());
+                    maximum = GenerateIndex(maxInSummary, clusters[maxInSummary]->MaximumVEB());
                 }
             }
         }
         else if (key == maximum) {
-            maximum = GenerateIndex(High(key), clusters[High(key)]->maximumVEB());
+            maximum = GenerateIndex(High(key), clusters[High(key)]->MaximumVEB());
         }
     }
 }
