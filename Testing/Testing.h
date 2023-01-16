@@ -9,6 +9,7 @@ public:;
     Testing(std::string URL, int count);
 
     void StartTests();
+    void GenerateTests();
 };
 
 

@@ -5,6 +5,8 @@
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <random>
+#include <cmath>
 
 class TestsGenerator {
 
@@ -23,6 +25,9 @@ protected:
     TestsGenerator(std::string URL, int count);
 
     void GenerateTests();
+
+private:
+    int k, universeSize, buffer;
 };
 
 #endif //VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
