@@ -26,18 +26,23 @@ void TestsGenerator::GenerateTests() {
 
         fin << universeSize << "\n";
 
-        fin << "f " << dist(gen) << "\n";
+        fin << "i " << 0 << "\n";
+        fin << "i " << universeSize - 1 << "\n";
+
+        fin << "s " << 0 << "\n";
+        fans << universeSize - 1 <<"\n";
+
+        fin << "p " << universeSize - 1 << "\n";
         fans << 0 <<"\n";
 
-        buffer = dist(gen);
-        fin << "i " << buffer << "\n";
-        fin << "r " << buffer << "\n";
+        for (int j = 1; j < universeSize - 1; j++) {
+            fin << "i " << j << "\n";
+        }
 
-        fin << "s " << dist(gen) << "\n";
-        fans << "-1" <<"\n";
+        fin << "f " << dist(gen) << "\n";
+        fans << 1 <<"\n";
 
-        fin << "p " << dist(gen) << "\ne";
-        fans << "-1" <<"\n";
+        fin << "r " << dist(gen) << "\ne";
 
         k++;
 
