@@ -107,12 +107,16 @@ void Testing::StartTests() {
                 }
                 else if(word == maximumSymbol) {
                     ans >> wordSub;
+
                     int answer = vanEmdeBoasTree->MaximumVEB();
+
                     fout << answer << (answer == std::stoi(wordSub) ? " OK" : " Error") << "\n";
                 }
                 else if(word == minimumSymbol) {
                     ans >> wordSub;
+
                     int answer = vanEmdeBoasTree->MinimumVEB();
+
                     fout << answer << (answer == std::stoi(wordSub) ? " OK" : " Error") << "\n";
                 }
             }

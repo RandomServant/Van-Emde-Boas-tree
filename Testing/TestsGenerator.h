@@ -24,7 +24,7 @@ protected:
 
     TestsGenerator(std::string URL, int count);
 
-    void GenerateTests();
+    virtual void GenerateTests();
 
 private:
     int k, universeSize, buffer;

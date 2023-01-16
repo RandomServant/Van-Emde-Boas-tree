@@ -6,32 +6,32 @@
 class VanEmdeBoasTree {
 
 private:
-    int universeSize;
-    int minimum;
-    int maximum;
+    int  universeSize;
+    int  minimum;
+    int  maximum;
     VanEmdeBoasTree* summary;
     VanEmdeBoasTree** clusters;
 
-    int High(int x) const;
-    int Low(int x) const;
-    int GenerateIndex(int x, int y) const;
+    int  High(int  x) const;
+    int  Low(int  x) const;
+    int  GenerateIndex(int  x, int  y) const;
 
 
 public:
-    VanEmdeBoasTree(int size);
+    VanEmdeBoasTree(int  size);
 
     ~VanEmdeBoasTree();
 
-    int MinimumVEB() const;
-    int MaximumVEB() const;
+    int  MinimumVEB() const;
+    int  MaximumVEB() const;
 
-    void Insert(int key);
-    int SuccessorVEB(int key);
-    int PredecessorVEB(int key);
-    void RemoveVEB(int key);
-    bool Find(int key);
+    void Insert(int  key);
+    int  SuccessorVEB(int  key);
+    int  PredecessorVEB(int  key);
+    void RemoveVEB(int  key);
+    bool Find(int  key);
 
-    void PrintTreeAfterKey(int key = 0);
+    void PrintTreeAfterKey(int  key = 0);
 };
 
 

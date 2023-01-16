@@ -34,11 +34,15 @@ void TestsGenerator::GenerateTests() {
         fin << "r " << buffer << "\n";
 
         fin << "s " << dist(gen) << "\n";
-        fans << -1 <<"\n";
+        fans << "-1" <<"\n";
 
         fin << "p " << dist(gen) << "\ne";
-        fans << -1 <<"\n";
+        fans << "-1" <<"\n";
 
         k++;
+
+        fin.close();
+        fout.close();
+        fans.close();
     }
 }
