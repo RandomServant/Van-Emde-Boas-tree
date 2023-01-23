@@ -120,7 +120,7 @@ VEB дерево было изобретено командой во главе 
 - `SuccessorVEB(x)` — Поиск следующего числа после `x`, которое содержится в дереве.
 - `PredecessorVEB(x)` — Поиск предшествующего `x` числа.
 
-| Insert         | Remove         | MinimumVEB | MaximumVEB | Find           | SuccessorVEB   | PredecessorVEB |
+| Insert         | RemoveVEB         | MinimumVEB | MaximumVEB | Find           | SuccessorVEB   | PredecessorVEB |
 |----------------|----------------|------------|------------|----------------|----------------|----------------|
 | $$O(log(log(U)))$$ | $$O(log(log(U)))$$ | $$O(1)$$       | $$O(1)$$       | $$O(log(log(U)))$$ | $$O(log(log(U)))$$ | $$O(log(log(U)))$$ |
 
@@ -499,7 +499,7 @@ e
 ```
 0 OK Find - 1200ns
 Insert - 900ns
-Remove - 800ns
+RemoveVEB - 800ns
 -1 OK SuccessorVEB - 1000ns
 -1 OK PredecessorVEB - 1000ns
 -1 Error
@@ -511,7 +511,7 @@ Remove - 800ns
 Создан для проверки производительности.
 Создаёт указанное количество фалов в указанной папке.
 ```c++
-TestsGenerator *test = new TestsGenerator(/*Путь к папке с файлами*/, /*Количество файлов*/);
+Testing *test = new Testing(/*Путь к папке с файлами*/, /*Количество файлов*/);
 test->GenerateTests(/*Тестируемая операция*/);
 test->StartTests(/*Тестируемая операция*/);
 ```
@@ -525,8 +525,8 @@ test->StartTests(/*Тестируемая операция*/);
 Каждая операция тестировалась 1 млн. раз, а после высчитывалось среднее время её работы.
 - Операция `Find` тестировалась при полностью заполненном дереве.
 - Операции `SuccessorVEB` и `PredecessorVEB` тестировались при заполненных первом и последним элементах для достижения максимальной сложности работы.
-- Операция `Insert` тестировалась совместно с операцией Remove, где операция `Insert` полностью заполняла дерево,
-а после операция `Remove` полностью очищала его.
+- Операция `Insert` тестировалась совместно с операцией `RemoveVEB`, где операция `Insert` полностью заполняла дерево,
+а после операция `RemoveVEB` полностью очищала его.
 
 Графики построены с помощью языка программирования `Python` и библиотеки `matplotlib`.
 
@@ -551,9 +551,9 @@ test->StartTests(/*Тестируемая операция*/);
 | *Рис. 5: График операции PredecessorVEB* |
 
 -----------------
-| ![Рис. 6: График Remove](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove.png) |
+| ![Рис. 6: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/RemoveVEB.png) |
 |:--:|
-| *Рис. 6: График операции Remove* |
+| *Рис. 6: График операции RemoveVEB* |
 
 ------------------------
 9\. Список литературы <a name="Списоклитературы"></a>
