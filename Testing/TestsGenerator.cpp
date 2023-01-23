@@ -180,7 +180,7 @@ void TestsGenerator::StartTests(std::string function) {
 
                     fout << el_ms << "\n";
                 }
-                else if(word == successorSymbol) {
+                else if(word == predecessorSymbol) {
                     fin >> word;
 
                     auto b = std::chrono::steady_clock::now();
