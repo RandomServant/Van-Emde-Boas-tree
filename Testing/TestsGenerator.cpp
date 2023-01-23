@@ -86,13 +86,13 @@ void TestsGenerator::GenerateTests(std::string function) {
             continue;
         }
 
-        for (int j = 1; j < universeSize - 1; j++) {
+        for (int j = 0; j < universeSize - 1; j++) {
             fin << insertSymbol + " " << j << "\n";
         }
 
         if (function == findSymbol) {
             for (int j = 0; j < testCount; j++) {
-                fin << findSymbol + " " << dist(gen) << "\n";
+                fin << findSymbol + " " << j % universeSize << "\n";
             }
 
             fin << "e";
