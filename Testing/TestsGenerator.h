@@ -22,14 +22,12 @@ protected:
     const std::string maximumSymbol = "u";
     const std::string minimumSymbol = "d";
 
-public:
+    virtual void GenerateTests(std::string function);
+
     TestsGenerator(std::string URL, int count);
 
-    virtual void GenerateTests(std::string function);
-    virtual void StartTests(std::string function);
-
 private:
-    int universeSize;
+    int universeSize = 0;
     int testCount = 1000000;
 };
 
