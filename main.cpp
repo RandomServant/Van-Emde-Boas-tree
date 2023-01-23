@@ -5,10 +5,9 @@ using namespace std;
 int main() {
     setlocale(LC_ALL, "Russian");
 
-    Testing *test = new Testing("../Generated tests/", 3);
+    Testing *test = new Testing("../Generated tests/", 20);
 
-    test->GenerateTests();
-    test->StartTests();
+    test->StartGeneratingAndTesting("s");
 
     return 0;
 }

@@ -5,7 +5,7 @@ Testing::Testing(std::string url, int count) : TestsGenerator(url, count) {
     filesCount = count;
 }
 
-void Testing::StartTests() {
+void Testing::StartTesting() {
     for (int i = 1; i <= filesCount; i++) {
         VanEmdeBoasTree* vanEmdeBoasTree;
 
@@ -138,147 +138,7 @@ void Testing::StartTests() {
     }
 }
 
-void Testing::StartTests(std::string function) {
-    for (int i = 1; i <= filesCount; i++) {
-        VanEmdeBoasTree* vanEmdeBoasTree;
-
-        std::string urlIn = filesURL +
-                            (function != insertSymbol && function != removeSymbol ? function : insertSymbol + removeSymbol) +
-                            std::to_string(i) + ".in";
-        std::string urlOut = filesURL +
-                             (function != insertSymbol && function != removeSymbol ? function : insertSymbol + removeSymbol) +
-                             std::to_string(i) + ".out";
-
-        std::ifstream fin(urlIn);
-        std::ofstream fout(urlOut);
-
-        std::string word;
-
-         int wordToInt;
-
-        if (function == "c") {
-            while (true) {
-                fin >> word;
-
-                if (word == "e") break;
-
-                wordToInt = stoi(word);
-
-                auto b = std::chrono::steady_clock::now();
-
-                vanEmdeBoasTree = new VanEmdeBoasTree(wordToInt);
-
-                auto e = std::chrono::steady_clock::now();
-                auto el_ms = std::chrono::duration_cast<std::chrono::milliseconds>(e - b);
-
-                fout << el_ms << "\n";
-
-                delete vanEmdeBoasTree;
-            }
-            fin.close();
-            fout.close();
-
-            continue;
-        }
-
-        fin >> word;
-
-        vanEmdeBoasTree = new VanEmdeBoasTree(stoi(word));
-
-        if (function == findSymbol ||
-            function == successorSymbol ||
-            function == predecessorSymbol) {
-            while (true) {
-                fin >> word;
-
-                if (word == "e") break;
-
-                if(word == findSymbol) {
-                    fin >> word;
-
-                    wordToInt = stoi(word);
-
-                    auto b = std::chrono::steady_clock::now();
-
-                    vanEmdeBoasTree->Find(wordToInt);
-
-                    auto e = std::chrono::steady_clock::now();
-                    auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
-
-                    fout << el_ms << "\n";
-                }
-                else if(word == successorSymbol) {
-                    fin >> word;
-
-                    wordToInt = stoi(word);
-
-                    auto b = std::chrono::steady_clock::now();
-
-                    vanEmdeBoasTree->SuccessorVEB(wordToInt);
-
-                    auto e = std::chrono::steady_clock::now();
-                    auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
-
-                    fout << el_ms << "\n";
-                }
-                else if(word == predecessorSymbol) {
-                    fin >> word;
-
-                    wordToInt = stoi(word);
-
-                    auto b = std::chrono::steady_clock::now();
-
-                    vanEmdeBoasTree->PredecessorVEB(wordToInt);
-
-                    auto e = std::chrono::steady_clock::now();
-                    auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
-
-                    fout << el_ms << "\n";
-                }
-            }
-        }
-        else if (function == insertSymbol || function == removeSymbol) {
-            while (true) {
-                fin >> word;
-
-                if (word == "e") break;
-
-                if (word == insertSymbol) {
-                    fin >> word;
-
-                    wordToInt = stoi(word);
-
-                    auto b = std::chrono::steady_clock::now();
-
-                    vanEmdeBoasTree->Insert(wordToInt);
-
-                    auto e = std::chrono::steady_clock::now();
-                    auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
-
-                    fout << el_ms << "\n";
-                }
-                else if (word == removeSymbol) {
-                    fin >> word;
-
-                    wordToInt = stoi(word);
-
-                    auto b = std::chrono::steady_clock::now();
-
-                    vanEmdeBoasTree->RemoveVEB(wordToInt);
-
-                    auto e = std::chrono::steady_clock::now();
-                    auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
-
-                    fout << el_ms << "\n";
-                }
-            }
-        }
-        fin.close();
-        fout.close();
-    }
-}
-
-void Testing::GenerateTests(std::string function) {
-    TestsGenerator::GenerateTests(function);
+void Testing::StartGeneratingAndTesting(std::string function) {
+    TestsGenerator::StartGeneratingAndTesting(function);
 }
 
