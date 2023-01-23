@@ -8,8 +8,8 @@ class Testing : TestsGenerator {
 public:;
     Testing(std::string URL, int count);
 
-    void StartTests();
-    void GenerateTests() override;
+    void StartTests(std::string function) override;
+    void GenerateTests(std::string function) override;
 };
 
 

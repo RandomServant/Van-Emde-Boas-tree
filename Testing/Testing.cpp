@@ -5,7 +5,7 @@ Testing::Testing(std::string url, int count) : TestsGenerator(url, count) {
     filesCount = count;
 }
 
-void Testing::StartTests() {
+void Testing::StartTests(std::string function) {
     for (int i = 1; i <= filesCount; i++) {
         VanEmdeBoasTree* vanEmdeBoasTree;
 
@@ -128,7 +128,7 @@ void Testing::StartTests() {
     }
 }
 
-void Testing::GenerateTests() {
-    TestsGenerator::GenerateTests();
+void Testing::GenerateTests(std::string function) {
+    TestsGenerator::GenerateTests(function);
 }
 

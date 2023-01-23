@@ -22,12 +22,15 @@ protected:
     const std::string maximumSymbol = "u";
     const std::string minimumSymbol = "d";
 
+public:
     TestsGenerator(std::string URL, int count);
 
-    virtual void GenerateTests();
+    virtual void GenerateTests(std::string function);
+    virtual void StartTests(std::string function);
 
 private:
-    int k, universeSize, buffer;
+    int universeSize;
+    int testCount = 1000000;
 };
 
 #endif //VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
