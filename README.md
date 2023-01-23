@@ -551,7 +551,7 @@ test->StartTests(/*Тестируемая операция*/);
 | *Рис. 5: График операции PredecessorVEB* |
 
 -----------------
-| ![Рис. 6: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/RemoveVEB.png) |
+| ![Рис. 6: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove.png) |
 |:--:|
 | *Рис. 6: График операции RemoveVEB* |
 
