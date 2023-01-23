@@ -26,9 +26,11 @@ void Testing::StartTests() {
             std::string wordSub;
             fin >> word;
 
+            int wordToInt = stoi(word);
+
             auto b = std::chrono::steady_clock::now();
 
-            vanEmdeBoasTree = new VanEmdeBoasTree(std::stoi(word));
+            vanEmdeBoasTree = new VanEmdeBoasTree(wordToInt);
 
             auto e = std::chrono::steady_clock::now();
             auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
@@ -43,9 +45,11 @@ void Testing::StartTests() {
                     fin >> word;
                     ans >> wordSub;
 
+                    wordToInt = stoi(word);
+
                     auto begin = std::chrono::steady_clock::now();
 
-                    bool answer = vanEmdeBoasTree->Find(stoi(word));
+                    bool answer = vanEmdeBoasTree->Find(wordToInt);
 
                     auto end = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
@@ -56,9 +60,11 @@ void Testing::StartTests() {
                 else if(word == insertSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto begin = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->Insert(stoi(word));
+                    vanEmdeBoasTree->Insert(wordToInt);
 
                     auto end = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
@@ -81,28 +87,32 @@ void Testing::StartTests() {
                     fin >> word;
                     ans >> wordSub;
 
+                    wordToInt = stoi(word);
+
                     auto begin = std::chrono::steady_clock::now();
 
-                    int answer = vanEmdeBoasTree->SuccessorVEB(stoi(word));
+                    int answer = vanEmdeBoasTree->SuccessorVEB(wordToInt);
 
                     auto end = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
 
-                    fout << answer << (answer == std::stoi(wordSub) ? " OK " : " Error ")
+                    fout << answer << (answer == stoi(wordSub) ? " OK " : " Error ")
                     << "SuccessorVEB - " << elapsed_ms << "\n";
                 }
                 else if(word == predecessorSymbol) {
                     fin >> word;
                     ans >> wordSub;
 
+                    wordToInt = stoi(word);
+
                     auto begin = std::chrono::steady_clock::now();
 
-                    int answer = vanEmdeBoasTree->PredecessorVEB(stoi(word));
+                    int answer = vanEmdeBoasTree->PredecessorVEB(wordToInt);
 
                     auto end = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
 
-                    fout << answer << (answer == std::stoi(wordSub) ? " OK " : " Error ")
+                    fout << answer << (answer == stoi(wordSub) ? " OK " : " Error ")
                     << "PredecessorVEB - " << elapsed_ms << "\n";
                 }
                 else if(word == maximumSymbol) {
@@ -144,15 +154,19 @@ void Testing::StartTests(std::string function) {
 
         std::string word;
 
+         int wordToInt;
+
         if (function == "c") {
             while (true) {
                 fin >> word;
 
                 if (word == "e") break;
 
+                wordToInt = stoi(word);
+
                 auto b = std::chrono::steady_clock::now();
 
-                vanEmdeBoasTree = new VanEmdeBoasTree(std::stoi(word));
+                vanEmdeBoasTree = new VanEmdeBoasTree(wordToInt);
 
                 auto e = std::chrono::steady_clock::now();
                 auto el_ms = std::chrono::duration_cast<std::chrono::milliseconds>(e - b);
@@ -169,7 +183,7 @@ void Testing::StartTests(std::string function) {
 
         fin >> word;
 
-        vanEmdeBoasTree = new VanEmdeBoasTree(std::stoi(word));
+        vanEmdeBoasTree = new VanEmdeBoasTree(stoi(word));
 
         if (function == findSymbol ||
             function == successorSymbol ||
@@ -182,9 +196,11 @@ void Testing::StartTests(std::string function) {
                 if(word == findSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto b = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->Find(std::stoi(word));
+                    vanEmdeBoasTree->Find(wordToInt);
 
                     auto e = std::chrono::steady_clock::now();
                     auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
@@ -194,9 +210,11 @@ void Testing::StartTests(std::string function) {
                 else if(word == successorSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto b = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->SuccessorVEB(std::stoi(word));
+                    vanEmdeBoasTree->SuccessorVEB(wordToInt);
 
                     auto e = std::chrono::steady_clock::now();
                     auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
@@ -206,9 +224,11 @@ void Testing::StartTests(std::string function) {
                 else if(word == predecessorSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto b = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->PredecessorVEB(std::stoi(word));
+                    vanEmdeBoasTree->PredecessorVEB(wordToInt);
 
                     auto e = std::chrono::steady_clock::now();
                     auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
@@ -226,9 +246,11 @@ void Testing::StartTests(std::string function) {
                 if (word == insertSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto b = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->Insert(std::stoi(word));
+                    vanEmdeBoasTree->Insert(wordToInt);
 
                     auto e = std::chrono::steady_clock::now();
                     auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
@@ -238,9 +260,11 @@ void Testing::StartTests(std::string function) {
                 else if (word == removeSymbol) {
                     fin >> word;
 
+                    wordToInt = stoi(word);
+
                     auto b = std::chrono::steady_clock::now();
 
-                    vanEmdeBoasTree->RemoveVEB(std::stoi(word));
+                    vanEmdeBoasTree->RemoveVEB(wordToInt);
 
                     auto e = std::chrono::steady_clock::now();
                     auto el_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(e - b);
