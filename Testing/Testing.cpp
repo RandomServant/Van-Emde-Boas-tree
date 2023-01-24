@@ -138,11 +138,11 @@ void Testing::StartTesting() {
     }
 }
 
-void Testing::StartGeneratingAndTestingVEB(std::string function) {
-    TestsGenerator::StartGeneratingAndTestingVEB(function);
+void Testing::StartGeneratingAndTestingVEB(std::string function, bool random) {
+    TestsGenerator::StartGeneratingAndTestingVEB(function, random);
 }
 
-void Testing::StartGeneratingAndTestingSET(std::string function) {
-    TestsGenerator::StartGeneratingAndTestingSET(function);
+void Testing::StartGeneratingAndTestingSET(std::string function, bool random) {
+    TestsGenerator::StartGeneratingAndTestingSET(function, random);
 }
 
