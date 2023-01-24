@@ -12,3 +12,15 @@ void FisherYatesShuffle::Shuffle(int *arr, int n) {
         std::swap(arr[i], arr[j]);
     }
 }
+
+int* FisherYatesShuffle::GenerateArray(int n, bool random) {
+    int *arr = new int[n];
+
+    for (int i = 0; i < n; i++)
+        arr[i] = i;
+
+    if(random)
+        Shuffle(arr, n);
+
+    return arr;
+}

@@ -6,7 +6,8 @@
 
 class FisherYatesShuffle {
 public:
-    static void Shuffle(int *arr, int N);
+    static void Shuffle(int *arr, int n);
+    static int *GenerateArray(int n, bool random);
 };
 
 
