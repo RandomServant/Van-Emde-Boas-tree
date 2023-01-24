@@ -138,7 +138,11 @@ void Testing::StartTesting() {
     }
 }
 
-void Testing::StartGeneratingAndTesting(std::string function) {
-    TestsGenerator::StartGeneratingAndTesting(function);
+void Testing::StartGeneratingAndTestingVEB(std::string function) {
+    TestsGenerator::StartGeneratingAndTestingVEB(function);
+}
+
+void Testing::StartGeneratingAndTestingSET(std::string function) {
+    TestsGenerator::StartGeneratingAndTestingSET(function);
 }
 

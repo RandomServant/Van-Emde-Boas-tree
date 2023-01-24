@@ -6,10 +6,11 @@ TestsGenerator::TestsGenerator(std::string URL, int count)
 	filesCount = count;
 }
 
-void TestsGenerator::StartGeneratingAndTesting(std::string function) {
+void TestsGenerator::StartGeneratingAndTestingVEB(std::string function) {
     VanEmdeBoasTree* veb;
 
-    std::string urlOut = filesURL + function + ".time";
+    std::string urlOut = filesURL + "veb_" + (function != insertSymbol && function != removeSymbol ?
+            function : insertSymbol + removeSymbol) + ".time";
 
     std::ofstream fout(urlOut);
 
@@ -18,32 +19,31 @@ void TestsGenerator::StartGeneratingAndTesting(std::string function) {
 
         veb = new VanEmdeBoasTree(universeSize);
 
-        if (function == insertSymbol) {
-            auto begin = std::chrono::steady_clock::now();
+        if (function == insertSymbol || function == removeSymbol) {
+            for (int j = 0; j < testCount;) {
+                for (int k = 0; k < universeSize; k++) {
+                    auto begin = std::chrono::steady_clock::now();
 
-            for (int j = 0; j < testCount; j++) {
-                veb->Insert(j % universeSize);
+                    veb->Insert(k);
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << elapsed_ns.count() << " ";
+                }
+                for (int k = 0; k < universeSize; k++) {
+                    auto begin = std::chrono::steady_clock::now();
+
+                    veb->RemoveVEB(k);
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << elapsed_ns.count() << " ";
+                }
+                j += universeSize;
             }
-
-            auto end = std::chrono::steady_clock::now();
-            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
-                              / testCount;
-            fout << elapsed_ns.count() << "\n";
-
-            delete veb;
-            continue;
-        }
-        else if (function == removeSymbol) {
-            auto begin = std::chrono::steady_clock::now();
-
-            for (int j = 0; j < testCount; j++) {
-                veb->RemoveVEB(j % universeSize);
-            }
-
-            auto end = std::chrono::steady_clock::now();
-            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
-                              / testCount;
-            fout << elapsed_ns.count() << "\n";
+            fout << "\n";
 
             delete veb;
             continue;
@@ -54,43 +54,133 @@ void TestsGenerator::StartGeneratingAndTesting(std::string function) {
         }
 
         if (function == findSymbol) {
-            auto begin = std::chrono::steady_clock::now();
-
             for (int j = 0; j < testCount; j++) {
-                veb->Find(j % universeSize);
-            }
+                auto begin = std::chrono::steady_clock::now();
 
-            auto end = std::chrono::steady_clock::now();
-            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
-                    / testCount;
-            fout << elapsed_ns.count() << "\n";
+                veb->Find(j % universeSize);
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
         }
         else if (function == successorSymbol) {
-            auto begin = std::chrono::steady_clock::now();
-
             for (int j = 0; j < testCount; j++) {
-                veb->SuccessorVEB(j % universeSize);
-            }
+                auto begin = std::chrono::steady_clock::now();
 
-            auto end = std::chrono::steady_clock::now();
-            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
-                              / testCount;
-            fout << elapsed_ns.count() << "\n";
+                veb->SuccessorVEB(j % (universeSize - 1));
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
         }
         else if (function == predecessorSymbol) {
-            auto begin = std::chrono::steady_clock::now();
-
             for (int j = 0; j < testCount; j++) {
-                veb->PredecessorVEB(j % universeSize);
-            }
+                auto begin = std::chrono::steady_clock::now();
 
-            auto end = std::chrono::steady_clock::now();
-            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
-                              / testCount;
-            fout << elapsed_ns.count() << "\n";
+                veb->PredecessorVEB((j % (universeSize - 1)) + 1);
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
         }
 
         delete veb;
+    }
+    fout.close();
+}
+
+void TestsGenerator::StartGeneratingAndTestingSET(std::string function) {
+    std::set<int> orderSet;
+
+    std::string urlOut = filesURL + "os_" + (function != insertSymbol && function != removeSymbol ?
+            function : insertSymbol + removeSymbol) + ".time";
+
+    std::ofstream fout(urlOut);
+
+    for (int i = 0; i < filesCount; i++) {
+        universeSize = int(pow(2, i + 2));
+
+        if (function == insertSymbol || function == removeSymbol) {
+            for (int j = 0; j < testCount;) {
+                for (int k = 0; k < universeSize; k++) {
+                    auto begin = std::chrono::steady_clock::now();
+
+                    orderSet.insert(k);
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << elapsed_ns.count() << " ";
+                }
+                for (int k = 0; k < universeSize; k++) {
+                    auto begin = std::chrono::steady_clock::now();
+
+                   orderSet.erase(k);
+
+                    auto end = std::chrono::steady_clock::now();
+                    auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                    fout << elapsed_ns.count() << " ";
+                }
+                j += universeSize;
+            }
+            fout << "\n";
+
+            continue;
+        }
+
+        for (int j = 0; j < universeSize; j++) {
+            orderSet.insert(j);
+        }
+
+        if (function == findSymbol) {
+            for (int j = 0; j < testCount; j++) {
+                auto begin = std::chrono::steady_clock::now();
+
+                orderSet.find(j % universeSize);
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
+        }
+        else if (function == successorSymbol) {
+            for (int j = 0; j < testCount; j++) {
+                auto begin = std::chrono::steady_clock::now();
+
+                orderSet.upper_bound(j % (universeSize - 1));
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
+        }
+        else if (function == predecessorSymbol) {
+            for (int j = 0; j < testCount; j++) {
+                auto begin = std::chrono::steady_clock::now();
+
+                orderSet.lower_bound((j % (universeSize - 1)) + 1);
+
+                auto end = std::chrono::steady_clock::now();
+                auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+                fout << elapsed_ns.count() << " ";
+            }
+            fout << "\n";
+        }
     }
     fout.close();
 }
