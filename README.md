@@ -147,10 +147,17 @@ VanEmdeBoasTree* summary;
 VanEmdeBoasTree** clusters;
 ```
 
+-------------------
 | ![Рис. 1: Дерево ван Эмде Боаса размерностью 16, содержащее числа {2, 3, 4, 5, 7, 14, 15}](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/vEB_Struct.png) |
 |:--:|
-| *Рис. 1: Дерево ван Эмде Боаса размерностью 16, содержащее числа {2, 3, 4, 5, 7, 14, 15}* |
+| Рис. 1: Дерево ван Эмде Боаса размерностью 16, содержащее числа {2, 3, 4, 5, 7, 14, 15} |
 
+--------------------
+| ![Рис. 2: Summary хранит информацию о заполненности или пустоте детей текущего узла](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Summary.png) |
+|:--:|
+| Summary хранит информацию о заполненности или пустоте детей текущего узла |
+
+------------------------------------
 ### 6\.1.2. Конструктор <a name="Конструктор"></a>
 ```c++
 VanEmdeBoasTree(int size) {
@@ -535,29 +542,29 @@ test->StartGeneratingAndTestingSET(/*Тестируемая операция*/);
 Графики построены с помощью языка программирования `Python` и библиотеки `matplotlib`.
 
 -----------------
-| ![Рис. 2: График Find](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Find.png) |
+| ![Рис. 3: График Find](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Find.png) |
 |:--:|
-| *Рис. 2: График операции Find* |
+| *Рис. 3: График операции Find* |
 
 -----------------
-| ![Рис. 3: График Insert](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Insert.png) |
+| ![Рис. 4: График Insert](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Insert.png) |
 |:--:|
-| *Рис. 3: График операции Insert* |
+| *Рис. 4: График операции Insert* |
 
 -----------------
-| ![Рис. 4: График SuccessorVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Successor.png) |
+| ![Рис. 5: График SuccessorVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Successor.png) |
 |:--:|
-| *Рис. 4: График операции SuccessorVEB* |
+| *Рис. 5: График операции SuccessorVEB* |
 
 -----------------
-| ![Рис. 5: График PredecessorVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Predecessor.png) |
+| ![Рис. 6: График PredecessorVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Predecessor.png) |
 |:--:|
-| *Рис. 5: График операции PredecessorVEB* |
+| *Рис. 6: График операции PredecessorVEB* |
 
 -----------------
-| ![Рис. 6: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove.png) |
+| ![Рис. 7: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove.png) |
 |:--:|
-| *Рис. 6: График операции RemoveVEB* |
+| *Рис. 7: График операции RemoveVEB* |
 
 -----------------
 8.1. Итоги проверки <a name="Итогипроверки"></a>
