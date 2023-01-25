@@ -529,7 +529,7 @@ test->StartGeneratingAndTestingSET(/*Тестируемая операция*/);
 ---------------------
 8\. Проверка производительности <a name="Производительность"></a>
 ===================
-Для сравнения использовался контейнер `std::set` стандартной библиотеки шаблонов `STL`
+Для сравнения использовались контейнеры `std::set` и `std::unordered_set` стандартной библиотеки шаблонов `STL`
 и аналогичные **vEB дереву** функции.
 
 Каждая операция тестировалась 1 млн. раз, а после высчитывалось среднее время её работы.
@@ -537,17 +537,18 @@ test->StartGeneratingAndTestingSET(/*Тестируемая операция*/);
 - Операции `SuccessorVEB` и `PredecessorVEB` также тестировались при полностью заполненном дереве.
 - Операция `Insert` тестировалась совместно с операцией `RemoveVEB`, где операция `Insert` полностью заполняла дерево,
 а после операция `RemoveVEB` полностью очищала его.
-- Все операции выполнялись в порядке возрастания ключей.
+- Все операции выполнялись c одним и тем же набором случайных значений. Набор случайных значений сгенерирован
+с помощью алгоритма перестановки Фишера-Йетса.
 
 Графики построены с помощью языка программирования `Python` и библиотеки `matplotlib`.
 
 -----------------
-| ![Рис. 3: График Find](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Find.png) |
+| ![Рис. 3: График Find](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Find_r.png) |
 |:--:|
 | *Рис. 3: График операции Find* |
 
 -----------------
-| ![Рис. 4: График Insert](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Insert.png) |
+| ![Рис. 4: График Insert](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Insert_r.png) |
 |:--:|
 | *Рис. 4: График операции Insert* |
 
@@ -562,7 +563,7 @@ test->StartGeneratingAndTestingSET(/*Тестируемая операция*/);
 | *Рис. 6: График операции PredecessorVEB* |
 
 -----------------
-| ![Рис. 7: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove.png) |
+| ![Рис. 7: График RemoveVEB](https://github.com/RandomServant/Van-Emde-Boas-tree/blob/master/Images/Charts/Remove_r.png) |
 |:--:|
 | *Рис. 7: График операции RemoveVEB* |
 
@@ -570,7 +571,9 @@ test->StartGeneratingAndTestingSET(/*Тестируемая операция*/);
 8.1. Итоги проверки <a name="Итогипроверки"></a>
 -----------------
 По результатам проверки видно, что функции `Successor` и `Predecessor` **vEB дерева** 
-проигрывают в производительности аналогичным функциям контейнера `std::set` из библиотеки `STL` . 
+проигрывают в производительности аналогичным функциям контейнера `std::set` из библиотеки `STL`.
+Так же видно, что алгоритм **vEB дерева** обгоняет по скорости стандартные контейнеры, кроме 
+случаев с большими числами. В них `std::unordered_set` обгоняет алгоритм дерева ван Эмде Боаса.
 
 ------------------------
 9\. Список литературы <a name="Списоклитературы"></a>
