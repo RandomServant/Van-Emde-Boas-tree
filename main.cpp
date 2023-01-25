@@ -7,7 +7,7 @@ int main() {
 
     Testing *test = new Testing("../Generated tests/", 20);
 
-    test->StartGeneratingAndTestingSET("f");
+    test->StartGeneratingAndTestingSET("f", true);
 
     return 0;
 }
