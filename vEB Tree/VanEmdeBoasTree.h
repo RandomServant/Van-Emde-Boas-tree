@@ -55,8 +55,6 @@ public:
     int PredecessorVEB(int key);
     void RemoveVEB(int key);
     bool Find(int key);
-
-    void PrintTreeAfterKey(int key = 0);
 };
 
 

@@ -283,6 +283,8 @@ void TestsGenerator::StartGeneratingAndTestingUNSET(std::string function, bool r
             continue;
         }
 
+        unOrderSet.reserve(universeSize);
+
         for (int j = 0; j < universeSize; j++) {
             unOrderSet.insert(arr[j]);
         }
