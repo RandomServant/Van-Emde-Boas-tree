@@ -1,3 +1,25 @@
+/*
+    Этот заголовочный файл содержит библиотеку с++ с реализацией
+    генератора тестов на производительность алгоритма "Дерево ван Эмде Боасса"
+
+    Подключение:
+    #include "TestsGenerator.h"
+
+    Создание генератора тестов на производительность:
+    TestsGenerator *название = new TestsGenerator();
+
+    Начать тестирование для vEB дерева
+    название->StartGeneratingAndTestingVEB(Тестируемая операция, true или false);
+
+    Начать тестирование для ordered set
+    название->StartGeneratingAndTestingSET(Тестируемая операция, true или false);
+
+    Начать тестирование для unordered set
+    название->StartGeneratingAndTestingUNSET(Тестируемая операция, true или false);
+
+    Подробнее по ссылке github.com/RandomServant/Van-Emde-Boas-tree
+*/
+
 #ifndef VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
 #define VAN_EMDEBOAS_TREE_TESTSGENERATOR_H
 

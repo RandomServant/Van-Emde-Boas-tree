@@ -1,3 +1,28 @@
+/*
+    Этот заголовочный файл содержит библиотеку с++ с реализацией алгоритма "Дерево ван Эмде Боасса"
+
+    Подключение:
+    #include "VanEmdeBoasTree.h"
+
+    Создание дерева ван Эмде Боаса и выделение памяти N:
+    VanEmdeBoasTree *название = new VanEmdeBoasTree(N);
+
+    Операция вставки:
+    название->Insert(x);
+
+    Операция удаления:
+    название->Remove(x);
+
+    Операция поиска:
+    название->Find(x);
+
+    Операция преемника:
+    название->SuccessorVEB(x);
+
+    Операция предшественника:
+    название->PredecessorVEB(x);
+*/
+
 #ifndef VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
 #define VAN_EMDEBOAS_TREE_VANEMDEBOASTREE_H
 
