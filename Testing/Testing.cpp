@@ -146,3 +146,7 @@ void Testing::StartGeneratingAndTestingSET(std::string function, bool random) {
     TestsGenerator::StartGeneratingAndTestingSET(function, random);
 }
 
+void Testing::StartGeneratingAndTestingUNSET(std::string function, bool random) {
+    TestsGenerator::StartGeneratingAndTestingUNSET(function, random);
+}
+
