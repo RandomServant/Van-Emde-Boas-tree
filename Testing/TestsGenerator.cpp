@@ -119,7 +119,7 @@ void TestsGenerator::StartGeneratingAndTestingVEB(std::string function, bool ran
 }
 
 void TestsGenerator::StartGeneratingAndTestingSET(std::string function, bool random) {
-    std::unordered_set<int> orderSet;
+    std::set<int> orderSet;
 
     std::string urlOut = filesURL + "os_" + (function != insertSymbol && function != removeSymbol ?
             function : insertSymbol + removeSymbol) + (random ? "_r" : "") + ".time";
@@ -225,7 +225,7 @@ void TestsGenerator::StartGeneratingAndTestingSET(std::string function, bool ran
 }
 
 void TestsGenerator::StartGeneratingAndTestingUNSET(std::string function, bool random) {
-    std::set<int> unOrderSet;
+    std::unordered_set<int> unOrderSet;
 
     std::string urlOut = filesURL + "us_" + (function != insertSymbol && function != removeSymbol ?
             function : insertSymbol + removeSymbol) + (random ? "_r" : "") + ".time";
